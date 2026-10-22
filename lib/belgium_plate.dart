@@ -1,6 +1,6 @@
 /// Belgium's licence plates for the `plate_core` library.
 ///
-/// TODO one sentence: categories, colours, themes, alphabets, advisory validator.
+/// nine designs (private, dealer, trailer, temporary, vintage, diplomatic, royal, military, motorcycle) in red, green, white-on-red and black themes, with Latin alphabets and an advisory validator.
 library;
 
 export 'src/belgium_colors.dart';

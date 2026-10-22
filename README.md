@@ -10,7 +10,7 @@ https://platexample.ir/#/discover/belgium
 
 # belgium_plate
 
-Belgium's licence plates for [`plate_core`](https://pub.dev/packages/plate_core) — TODO one sentence: categories, colours, themes, alphabets, advisory validator.
+Belgium's licence plates for [`plate_core`](https://pub.dev/packages/plate_core) — nine designs (private, dealer, trailer, temporary, vintage, diplomatic, royal, military, motorcycle) in red, green, white-on-red and black themes, with Latin alphabets and an advisory validator.
 
 ```dart
 import 'package:plate_core/plate_core.dart';
