@@ -1,7 +1,7 @@
 name: belgium_plate
 description: "Belgium's licence plates for the plate_core library — nine designs (private, dealer, trailer, temporary, vintage, diplomatic, royal, military, motorcycle) in red, green, white-on-red and black themes, with Latin alphabets and an advisory validator."
 version: 0.1.0
-publish_to: none
+repository: https://github.com/ArAd1Beyranvand/belgium_plate
 resolution: workspace
 
 environment:
