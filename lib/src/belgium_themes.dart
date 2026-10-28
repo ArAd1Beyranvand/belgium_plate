@@ -37,4 +37,18 @@ abstract final class BelgiumThemes {
 
   /// Black on white: military.
   static final PlateTheme military = _field(BelgiumColors.white, BelgiumColors.militaryBlack);
+
+  /// [PlateSpec.resolveTheme] for `BelgiumPlates.plain`: dealer green when the
+  /// letters start with Z, the private red otherwise.
+  static PlateTheme byLetters(PlateTheme base, String Function(String key) group) {
+    final t = group('letters').startsWith('Z') ? dealer : private;
+    return base.copyWith(
+      plateBackground: t.plateBackground,
+      plateBorder: t.plateBorder,
+      ink: t.ink,
+      dividerColor: t.dividerColor,
+      activeColor: t.activeColor,
+      inactiveColor: t.inactiveColor,
+    );
+  }
 }

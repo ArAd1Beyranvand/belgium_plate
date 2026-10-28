@@ -27,8 +27,8 @@ void main() {
   final Map<String, (PlateSpec, PlateTheme, String)> cases =
       <String, (PlateSpec, PlateTheme, String)>{
         'private': (BelgiumPlates.private, BelgiumThemes.private, '1 ABC 003'),
-        'dealer': (BelgiumPlates.dealer, BelgiumThemes.dealer, '1 ZAV 257'),
-        'trailer': (BelgiumPlates.trailer, BelgiumThemes.private, '1 QAA 620'),
+        'dealer': (BelgiumPlates.plain, BelgiumThemes.private, '1 ZAV 257'),
+        'trailer': (BelgiumPlates.plain, BelgiumThemes.private, '1 QAA 620'),
         'temporary': (BelgiumPlates.temporary, BelgiumThemes.temporary, 'XA 16 DRN'),
         'vintage': (BelgiumPlates.vintage, BelgiumThemes.private, '000 200'),
         'diplomatic': (BelgiumPlates.diplomatic, BelgiumThemes.private, 'AT 119'),

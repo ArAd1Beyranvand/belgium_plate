@@ -21,7 +21,7 @@ class BelgiumValidator extends PlateValidator {
   static const String reasonLength = 'A field has the wrong number of symbols.';
   static const String reasonKind = 'A field mixes letters and digits.';
   static const String reasonDealer =
-      'A dealer plate starts with Z and a second letter from A to Y.';
+      'A dealer plate (first letter Z) has a second letter from A to Y.';
 
   static const List<_Rule> _threeFields = <_Rule>[
     _Rule('series', digits: true, min: 1),
@@ -31,8 +31,7 @@ class BelgiumValidator extends PlateValidator {
 
   static const Map<String, List<_Rule>> _rules = <String, List<_Rule>>{
     'be.private': _threeFields,
-    'be.dealer': _threeFields,
-    'be.trailer': _threeFields,
+    'be.plain': _threeFields,
     'be.motorcycle': <_Rule>[
       _Rule('series', digits: false, min: 1),
       _Rule('letters', digits: false, min: 3),
@@ -74,9 +73,9 @@ class BelgiumValidator extends PlateValidator {
         return const PlateValidation.invalid(reasonKind);
       }
     }
-    if (entry.spec.id == 'be.dealer') {
+    if (entry.spec.id == 'be.plain') {
       final String l = entry.group('letters');
-      if (l[0] != 'Z' || l[1] == 'Z') {
+      if (l.startsWith('ZZ')) {
         return const PlateValidation.invalid(reasonDealer);
       }
     }

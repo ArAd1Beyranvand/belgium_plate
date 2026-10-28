@@ -6,6 +6,7 @@ import 'package:plate_core/plate_core.dart';
 
 import 'belgium_colors.dart';
 import 'belgium_country.dart';
+import 'belgium_themes.dart';
 
 /// Where the ink sits, in millimetres.
 ///
@@ -134,6 +135,7 @@ abstract final class BelgiumPlates {
     bool euroBand = false,
     List<PlateLabel> labels = const <PlateLabel>[],
     List<PlateDecal> decals = const <PlateDecal>[],
+    PlateThemeResolver? resolveTheme,
   }) => PlateSpec(
     id: id,
     country: BelgiumCountry.belgium,
@@ -146,6 +148,7 @@ abstract final class BelgiumPlates {
     rules: rules,
     labels: <PlateLabel>[if (euroBand) _euroB, ...labels],
     decals: decals,
+    resolveTheme: resolveTheme,
     textGroups: <PlateTextGroup>[
       for (int i = 0; i < fields.length; i++) PlateTextGroup(<int>[i], key: fields[i].key),
     ],
@@ -164,16 +167,12 @@ abstract final class BelgiumPlates {
     rules: <PlateRule>[_hyphen(123.25, 16.5), _hyphen(322.5, 17)],
   );
 
-  /// `1-ZAV-257`, green, no Euroband. The article says the dealer plate has
-  /// one; the photograph (2018) does not, and the picture wins.
-  static final PlateSpec dealer = _plain('be.dealer');
-
-  /// `1-QAA-620`, trailer and caravan over 750 kg: the standard series with a
-  /// Q, no Euroband in the photograph.
-  static final PlateSpec trailer = _plain('be.trailer');
-
-  static PlateSpec _plain(String id) => _line(
-    id: id,
+  /// `1-ZAV-257` dealer (green, first letter Z) and `1-QAA-620` trailer and
+  /// caravan over 750 kg (first letter Q): no Euroband in the photographs. The
+  /// article says the dealer plate has one; the picture wins.
+  static final PlateSpec plain = _line(
+    id: 'be.plain',
+    resolveTheme: BelgiumThemes.byLetters,
     fields: const <_Field>[
       _Field('series', _digits, left: 63.5, width: 50, count: 1, centre: 54.7),
       _Field('letters', _letters, left: 115.5, width: 166.5, count: 3, centre: 54.7),
@@ -339,8 +338,7 @@ abstract final class BelgiumPlates {
 
   static List<PlateSpec> get all => <PlateSpec>[
     private,
-    dealer,
-    trailer,
+    plain,
     temporary,
     vintage,
     diplomatic,
