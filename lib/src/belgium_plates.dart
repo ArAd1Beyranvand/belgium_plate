@@ -142,7 +142,9 @@ abstract final class BelgiumPlates {
     canvasWidth: _Layout.width,
     canvasHeight: _Layout.height,
     noPanel: !euroBand,
-    panel: euroBand ? _euroPanel : const PlatePanel(box: PlateBox(0, 0, 0, _Layout.height)),
+    panel: euroBand
+        ? _euroPanel
+        : const PlatePanel(box: PlateBox(0, 0, 0, _Layout.height)),
     background: euroBand ? _euroBand : PlateSection.plain,
     slots: <PlateSlot>[for (final _Field f in fields) f.toSlot()],
     rules: rules,
@@ -150,7 +152,8 @@ abstract final class BelgiumPlates {
     decals: decals,
     resolveTheme: resolveTheme,
     textGroups: <PlateTextGroup>[
-      for (int i = 0; i < fields.length; i++) PlateTextGroup(<int>[i], key: fields[i].key),
+      for (int i = 0; i < fields.length; i++)
+        PlateTextGroup(<int>[i], key: fields[i].key),
     ],
   );
 
@@ -175,7 +178,14 @@ abstract final class BelgiumPlates {
     resolveTheme: BelgiumThemes.byLetters,
     fields: const <_Field>[
       _Field('series', _digits, left: 63.5, width: 50, count: 1, centre: 54.7),
-      _Field('letters', _letters, left: 115.5, width: 166.5, count: 3, centre: 54.7),
+      _Field(
+        'letters',
+        _letters,
+        left: 115.5,
+        width: 166.5,
+        count: 3,
+        centre: 54.7,
+      ),
       _Field('serial', _digits, left: 339, width: 168, count: 3, centre: 54.7),
     ],
     rules: <PlateRule>[_hyphen(100, 17), _hyphen(302, 17)],
@@ -191,7 +201,10 @@ abstract final class BelgiumPlates {
       _Field('number', _digits, left: 208, width: 100, count: 2, centre: 57),
       _Field('letters', _letters, left: 357, width: 148, count: 3, centre: 57),
     ],
-    rules: <PlateRule>[_hyphen(171.5, 17, top: 53), _hyphen(328.5, 16.7, top: 53)],
+    rules: <PlateRule>[
+      _hyphen(171.5, 17, top: 53),
+      _hyphen(328.5, 16.7, top: 53),
+    ],
   );
 
   /// `000-200`, vintage (oldtimer): two runs of three digits, no Euroband.
@@ -249,7 +262,14 @@ abstract final class BelgiumPlates {
   static final PlateSpec military = _line(
     id: 'be.military',
     fields: const <_Field>[
-      _Field('serial', _digits, left: 172.7, width: 263.5, count: 5, centre: 56.3),
+      _Field(
+        'serial',
+        _digits,
+        left: 172.7,
+        width: 263.5,
+        count: 5,
+        centre: 56.3,
+      ),
     ],
     rules: const <PlateRule>[],
     decals: const <PlateDecal>[
@@ -279,7 +299,10 @@ abstract final class BelgiumPlates {
       canvasWidth: _Layout.motoWidth,
       canvasHeight: _Layout.motoHeight,
       borderWidthRatioOverride: 4 / _Layout.motoHeight,
-      panel: const PlatePanel(box: PlateBox(2.3, 66, 29.4, 45), padding: EdgeInsets.zero),
+      panel: const PlatePanel(
+        box: PlateBox(2.3, 66, 29.4, 45),
+        padding: EdgeInsets.zero,
+      ),
       background: const PlateSection.columns(<PlatePart>[
         PlatePart(
           PlateSection.rows(<PlatePart>[

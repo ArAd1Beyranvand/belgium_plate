@@ -23,10 +23,16 @@ abstract final class BelgiumThemes {
   );
 
   /// Red on white: private, trailer, vintage, diplomatic, royal, motorcycle.
-  static final PlateTheme private = _field(BelgiumColors.white, BelgiumColors.red);
+  static final PlateTheme private = _field(
+    BelgiumColors.white,
+    BelgiumColors.red,
+  );
 
   /// Green on white: dealers.
-  static final PlateTheme dealer = _field(BelgiumColors.white, BelgiumColors.dealerGreen);
+  static final PlateTheme dealer = _field(
+    BelgiumColors.white,
+    BelgiumColors.dealerGreen,
+  );
 
   /// White on red: temporary and export.
   static final PlateTheme temporary = _field(
@@ -36,11 +42,17 @@ abstract final class BelgiumThemes {
   );
 
   /// Black on white: military.
-  static final PlateTheme military = _field(BelgiumColors.white, BelgiumColors.militaryBlack);
+  static final PlateTheme military = _field(
+    BelgiumColors.white,
+    BelgiumColors.militaryBlack,
+  );
 
   /// [PlateSpec.resolveTheme] for `BelgiumPlates.plain`: dealer green when the
   /// letters start with Z, the private red otherwise.
-  static PlateTheme byLetters(PlateTheme base, String Function(String key) group) {
+  static PlateTheme byLetters(
+    PlateTheme base,
+    String Function(String key) group,
+  ) {
     final t = group('letters').startsWith('Z') ? dealer : private;
     return base.copyWith(
       plateBackground: t.plateBackground,

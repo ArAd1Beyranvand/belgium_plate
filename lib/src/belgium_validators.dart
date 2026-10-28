@@ -2,7 +2,8 @@ import 'package:plate_core/plate_core.dart';
 
 /// One field's rule: letters or digits, between [min] and [max] of them.
 class _Rule {
-  const _Rule(this.key, {required this.digits, required this.min, int? max}) : max = max ?? min;
+  const _Rule(this.key, {required this.digits, required this.min, int? max})
+    : max = max ?? min;
 
   final String key;
   final bool digits;

@@ -29,18 +29,34 @@ void main() {
         'private': (BelgiumPlates.private, BelgiumThemes.private, '1 ABC 003'),
         'dealer': (BelgiumPlates.plain, BelgiumThemes.private, '1 ZAV 257'),
         'trailer': (BelgiumPlates.plain, BelgiumThemes.private, '1 QAA 620'),
-        'temporary': (BelgiumPlates.temporary, BelgiumThemes.temporary, 'XA 16 DRN'),
+        'temporary': (
+          BelgiumPlates.temporary,
+          BelgiumThemes.temporary,
+          'XA 16 DRN',
+        ),
         'vintage': (BelgiumPlates.vintage, BelgiumThemes.private, '000 200'),
-        'diplomatic': (BelgiumPlates.diplomatic, BelgiumThemes.private, 'AT 119'),
+        'diplomatic': (
+          BelgiumPlates.diplomatic,
+          BelgiumThemes.private,
+          'AT 119',
+        ),
         'royal': (BelgiumPlates.royal, BelgiumThemes.private, '2'),
         'military': (BelgiumPlates.military, BelgiumThemes.military, '26287'),
-        'motorcycle': (BelgiumPlates.motorcycle, BelgiumThemes.private, 'M AXJ 464'),
+        'motorcycle': (
+          BelgiumPlates.motorcycle,
+          BelgiumThemes.private,
+          'M AXJ 464',
+        ),
       };
 
-  for (final MapEntry<String, (PlateSpec, PlateTheme, String)> c in cases.entries) {
+  for (final MapEntry<String, (PlateSpec, PlateTheme, String)> c
+      in cases.entries) {
     testWidgets(c.key, (tester) async {
       final (PlateSpec spec, PlateTheme theme, String values) = c.value;
-      final PlateController controller = PlateController.fromValues(spec, values.split(' '));
+      final PlateController controller = PlateController.fromValues(
+        spec,
+        values.split(' '),
+      );
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -62,7 +78,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await expectLater(find.byType(PlateView), matchesGoldenFile('goldens/be_${c.key}.png'));
+      await expectLater(
+        find.byType(PlateView),
+        matchesGoldenFile('goldens/be_${c.key}.png'),
+      );
       await tester.pumpWidget(const SizedBox.shrink());
       controller.dispose();
     });
